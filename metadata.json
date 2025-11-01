@@ -1,0 +1,5 @@
+{
+  "name": "AI Background Remover",
+  "description": "An intelligent tool that uses the Gemini API to effortlessly remove the background from any image. Simply upload your photo and let the AI do the work, providing you with a clean, transparent-background image ready for download.",
+  "requestFramePermissions": []
+}
