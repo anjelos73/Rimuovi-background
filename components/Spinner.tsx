@@ -1,11 +1,15 @@
 
 import React from 'react';
 
-export const Spinner: React.FC = () => {
+interface SpinnerProps {
+  progress: number;
+}
+
+export const Spinner: React.FC<SpinnerProps> = ({ progress }) => {
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex flex-col justify-center items-center gap-4 w-full max-w-xs px-4 text-center">
       <svg
-        className="animate-spin -ml-1 mr-3 h-10 w-10 text-indigo-400"
+        className="animate-spin h-10 w-10 text-indigo-400"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -25,6 +29,13 @@ export const Spinner: React.FC = () => {
         ></path>
       </svg>
       <span className="text-lg text-gray-300">Processing...</span>
+      <div className="w-full bg-gray-700 rounded-full h-2.5" role="progressbar" aria-valuenow={progress} aria-valuemin={0} aria-valuemax={100}>
+        <div
+          className="bg-gradient-to-r from-purple-500 to-indigo-500 h-2.5 rounded-full transition-all duration-150 ease-linear"
+          style={{ width: `${progress}%` }}
+        ></div>
+      </div>
+      <span className="text-sm text-gray-400 font-mono">{progress.toFixed(0)}%</span>
     </div>
   );
 };

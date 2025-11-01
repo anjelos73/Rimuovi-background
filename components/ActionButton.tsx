@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Wand2 } from 'lucide-react';
 import type { FileDetails } from '../types';
@@ -7,13 +6,14 @@ interface ActionButtonProps {
     originalImage: FileDetails | null;
     isLoading: boolean;
     onRemoveBackground: () => void;
+    isDisabled: boolean;
 }
 
-export const ActionButton: React.FC<ActionButtonProps> = ({ originalImage, isLoading, onRemoveBackground }) => {
+export const ActionButton: React.FC<ActionButtonProps> = ({ originalImage, isLoading, onRemoveBackground, isDisabled }) => {
     return (
         <button
             onClick={onRemoveBackground}
-            disabled={!originalImage || isLoading}
+            disabled={!originalImage || isDisabled}
             className="w-full md:w-auto flex items-center justify-center gap-3 px-8 py-4 text-lg font-semibold text-white bg-indigo-600 rounded-full shadow-lg shadow-indigo-900/50 hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed disabled:shadow-none transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-500"
         >
             {isLoading ? (
